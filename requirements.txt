@@ -1,0 +1,2 @@
+# Intentionally vulnerable package for pip-audit (SCA) testing
+requests==2.19.1

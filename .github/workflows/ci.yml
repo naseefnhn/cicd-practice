@@ -43,3 +43,21 @@ jobs:
 
       - name: Run SAST scan
         run: semgrep scan --config p/sql-injection --error .
+
+  sca:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Run SCA scan (pip-audit)
+        run: pip-audit -r requirements.txt
