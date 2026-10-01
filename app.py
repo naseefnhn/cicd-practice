@@ -1,6 +1,6 @@
-def get_user_query(username):
+def get_user(cursor, username):
     query = "SELECT * FROM users WHERE username = '" + username + "'"
-    return query
+    cursor.execute(query)
 
 def add(a, b):
     return a + b
