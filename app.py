@@ -1,13 +1,8 @@
-import sqlite3
-
-def get_user(username):
-    conn = sqlite3.connect('example.db')
-    cursor = conn.cursor()
-    
-    # Do the string formatting INLINE inside the execute() function.
-    # Semgrep rules specifically look for this pattern!
+def get_user(request, cursor):
+    # The p/sql-injection rule specifically looks for Django 'request' 
+    # objects being passed into cursor.execute to confirm it's user input!
+    username = request.GET.get("username")
     cursor.execute(f"SELECT * FROM users WHERE username = '{username}'")
     
 def add(a, b):
     return a + b
-
