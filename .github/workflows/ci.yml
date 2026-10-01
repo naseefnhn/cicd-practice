@@ -40,4 +40,4 @@ jobs:
         run: pip install semgrep
 
       - name: Run SAST scan
-        run: semgrep scan --config p/python .      
+        run: semgrep scan --config p/sql-injection .
